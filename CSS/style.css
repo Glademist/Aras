@@ -6,21 +6,25 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
     margin: 0;
+    padding: 10px; /* Small padding for better mobile display */
 }
 
 .container {
     text-align: center;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 90vw; /* Ensure the container fits within mobile viewports */
 }
 
 #randomButton {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
+    width: 80%; /* Adjust button size for easier tapping on mobile */
+    max-width: 300px; /* Cap the button width for larger screens */
 }
 
 .card-container {
@@ -30,9 +34,11 @@ body {
 }
 
 .card {
-    width: 150px; /* Nastavíme šířku karty */
-    height: 210px; /* Nastavíme výšku karty */
-    perspective: 1000px; /* Dodává efekt trojrozměrného pohledu */
+    width: 160px; /* Set width to a reasonable default size */
+    height: 230px; /* Set height to a reasonable default size */
+    max-width: 44vw; /* Relative max-width for responsiveness */
+    max-height: 67vw; /* Maintain aspect ratio */
+    perspective: 1000px; /* 3D effect for card flipping */
     position: relative;
 }
 
@@ -44,11 +50,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 4vw; /* Responsive font size for mobile screens */
     color: white;
     border-radius: 10px; /* Rounded corners */
     overflow: hidden; /* Ensure content respects rounded corners */
     transition: transform 0.8s ease-in-out; /* Smooth flipping animation */
+    background-size: cover; /* Ensure the image covers the entire card */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
 }
 
 .card-front {
@@ -56,8 +65,28 @@ body {
 }
 
 .card-back {
-    background-color: #333;
+    background-image: url('../img/card-back.png'); /* Apply the back image */
+    background-size: cover; /* Ensure the image covers the entire card */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    border-radius: 10px; /* Match the rounded corners of the front */
+    overflow: hidden; /* Ensure content respects rounded corners */
+    color: transparent; /* Remove the text color so it doesn't show */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-text {
+    position: absolute; /* Position the text absolutely within the card */
+    top: 58%; /* Start the text at roughly 58% of the card's height */
+    left: 50%; /* Center the text horizontally */
+    transform: translateX(-50%); /* Adjust horizontal centering */
+    z-index: 1; /* Ensure the text is on top of the background */
     color: white;
+    text-align: center; /* Center align the text */
+    padding: 5px; /* Add some padding for better readability */
+    width: 90%; /* Limit the text width to prevent overflow */
 }
 
 .card.flipped .card-front {
@@ -69,25 +98,33 @@ body {
 }
 
 .red {
-    background-image: url('../img/card-red.png');
-    background-size: cover; /* Scale the image to cover the entire card */
-    background-position: center; /* Center the image on the card */
+    background-image: url('../img/card-red.png'); /* Apply the red card image */
 }
 
 .yellow {
-    background-image: url('../img/card-yellow.png');
-    background-size: cover;
-    background-position: center;
+    background-image: url('../img/card-yellow.png'); /* Apply the yellow card image */
 }
 
 .green {
-    background-image: url('../img/card-green.png');
-    background-size: cover;
-    background-position: center;
+    background-image: url('../img/card-green.png'); /* Apply the green card image */
 }
 
 .purple {
-    background-image: url('../img/card-purple.png');
-    background-size: cover;
-    background-position: center;
+    background-image: url('../img/card-purple.png'); /* Apply the purple card image */
+}
+
+/* Media Query for iPhone 15 Pro (with typical screen resolution of 1179 x 2556 pixels) */
+@media only screen and (max-width: 430px) {
+    .card {
+        width: 45vw; /* Increase size for better mobile display */
+        height: 63vw; /* Maintain aspect ratio */
+    }
+
+    .card-face {
+        font-size: 5vw; /* Adjust font size for readability on small screens */
+    }
+
+    #randomButton {
+        width: 90%; /* Make the button wider for easier touch interaction */
+    }
 }

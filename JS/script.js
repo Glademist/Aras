@@ -1,6 +1,6 @@
 // Define the card data by their colors
 const cardsByColor = {
-    red: ['Building a 2.4 Voron', 'Warhammer', 'AI', 'Coding', 'Gaming'],
+    red: ['2.4 Voron', 'Warhammer', 'AI', 'Coding', 'Gaming'],
     yellow: ['Household chores', 'Physical health', 'Mental health'],
     green: ['Wife time', 'Daughter time', 'Son time'],
     purple: ['Wild time'] // New purple card
@@ -38,5 +38,5 @@ function flipCard() {
     card.classList.add('flipped');
 }
 
-// Add event listener to the button to trigger the flipCard function
-document.getElementById('randomButton').addEventListener('click', flipCard);
+// Add event listener to the card to trigger the flipCard function on click
+document.getElementById('singleCard').addEventListener('click', flipCard);
