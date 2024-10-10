@@ -1,41 +1,42 @@
-// Definujeme karty podle jejich barev
+// Define the card data by their colors
 const cardsByColor = {
     red: ['Building a 2.4 Voron', 'Warhammer', 'AI', 'Coding', 'Gaming'],
     yellow: ['Household chores', 'Physical health', 'Mental health'],
     green: ['Wife time', 'Daughter time', 'Son time'],
-    purple: ['Wild time'] // Nová barva s fialovou kartou
+    purple: ['Wild time'] // New purple card
 };
 
-// Funkce pro otočení a změnu karty
+// Function to flip the card and update its appearance
 function flipCard() {
     const card = document.getElementById('singleCard');
     const cardFront = document.getElementById('cardFront');
-    const cardImage = document.getElementById('cardImage');
     const cardText = document.getElementById('cardText');
 
-    // Pokud karta není otočená (rubem nahoru), pouze ji otoč zpět a ukonči funkci
+    // If the card is already flipped, just flip it back and exit
     if (card.classList.contains('flipped')) {
         card.classList.remove('flipped');
         return;
     }
 
-    // Náhodně vybereme barvu pouze pokud karta byla rubem nahoru
+    // Randomly choose a color only when the card is face-down
     const colors = Object.keys(cardsByColor); // ['red', 'yellow', 'green', 'purple']
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-    // Poté náhodně vybereme jednu kartu z vybrané barvy
+    // Randomly choose a card text from the selected color category
     const cardsOfSelectedColor = cardsByColor[randomColor];
     const randomCardText = cardsOfSelectedColor[Math.floor(Math.random() * cardsOfSelectedColor.length)];
 
-    // Nastavíme obrázek podle vybrané barvy
-    cardImage.src = `../img/card-${randomColor}.png`;
+    // Remove all color classes to reset the background image
+    cardFront.classList.remove('red', 'yellow', 'green', 'purple');
+    // Add the new color class to update the background image
+    cardFront.classList.add(randomColor);
 
-    // Změníme text přední strany karty
+    // Update the card text
     cardText.textContent = randomCardText;
 
-    // Otočíme kartu na lícovou stranu
+    // Flip the card to show the front side
     card.classList.add('flipped');
 }
 
-// Přidání události pro tlačítko
+// Add event listener to the button to trigger the flipCard function
 document.getElementById('randomButton').addEventListener('click', flipCard);

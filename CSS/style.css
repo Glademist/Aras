@@ -1,6 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#randomButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .card {
-    width: 575px;
-    height: 828px;
+    width: 150px; /* Nastavíme šířku karty */
+    height: 210px; /* Nastavíme výšku karty */
     perspective: 1000px; /* Dodává efekt trojrozměrného pohledu */
     position: relative;
 }
@@ -9,33 +40,19 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    backface-visibility: hidden; /* Skryje zadní stranu při otočení */
+    backface-visibility: hidden; /* Hide the back face when the card flips */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px; /* Přizpůsobeno větší velikosti karty */
+    font-size: 18px;
     color: white;
-    border-radius: 20px; /* Přidáme zakulacené rohy */
-    overflow: hidden; /* Zajistíme, že obrázky budou oříznuty podle zakulacených rohů */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensure content respects rounded corners */
+    transition: transform 0.8s ease-in-out; /* Smooth flipping animation */
 }
-
-.card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Zajistí, že obrázek pokryje celou plochu karty */
-    border-radius: 20px; /* Zajistí, že obrázek bude mít zakulacené rohy */
-    position: absolute; /* Ujistíme se, že obrázek je ve správné vrstvě */
-}
-
-.card-text {
-    position: relative; /* Aby byl text nad obrázkem */
-    z-index: 1; /* Zajistí, že text bude zobrazen nad obrázkem */
-    color: white;
-}
-
 
 .card-front {
-    transform: rotateY(180deg); /* Otočíme kartu na opačnou stranu */
+    transform: rotateY(180deg); /* Initial state of the front face when hidden */
 }
 
 .card-back {
@@ -44,17 +61,17 @@
 }
 
 .card.flipped .card-front {
-    transform: rotateY(0deg);
+    transform: rotateY(0deg); /* Rotate front face to show when flipped */
 }
 
 .card.flipped .card-back {
-    transform: rotateY(-180deg); /* Otočíme zadní stranu opačným směrem */
+    transform: rotateY(-180deg); /* Rotate back face to hide when flipped */
 }
 
 .red {
     background-image: url('../img/card-red.png');
-    background-size: cover;
-    background-position: center;
+    background-size: cover; /* Scale the image to cover the entire card */
+    background-position: center; /* Center the image on the card */
 }
 
 .yellow {
@@ -74,4 +91,3 @@
     background-size: cover;
     background-position: center;
 }
-
