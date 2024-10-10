@@ -1,29 +1,77 @@
-body {
-    font-family: Arial, sans-serif;
+.card {
+    width: 575px;
+    height: 828px;
+    perspective: 1000px; /* Dodává efekt trojrozměrného pohledu */
+    position: relative;
+}
+
+.card-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Skryje zadní stranu při otočení */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    margin: 0;
+    font-size: 24px; /* Přizpůsobeno větší velikosti karty */
+    color: white;
+    border-radius: 20px; /* Přidáme zakulacené rohy */
+    overflow: hidden; /* Zajistíme, že obrázky budou oříznuty podle zakulacených rohů */
 }
 
-.container {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Zajistí, že obrázek pokryje celou plochu karty */
+    border-radius: 20px; /* Zajistí, že obrázek bude mít zakulacené rohy */
+    position: absolute; /* Ujistíme se, že obrázek je ve správné vrstvě */
 }
 
-#randomButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
+.card-text {
+    position: relative; /* Aby byl text nad obrázkem */
+    z-index: 1; /* Zajistí, že text bude zobrazen nad obrázkem */
+    color: white;
 }
 
-#displayArea {
-    margin-top: 20px;
-    font-size: 18px;
+
+.card-front {
+    transform: rotateY(180deg); /* Otočíme kartu na opačnou stranu */
 }
+
+.card-back {
+    background-color: #333;
+    color: white;
+}
+
+.card.flipped .card-front {
+    transform: rotateY(0deg);
+}
+
+.card.flipped .card-back {
+    transform: rotateY(-180deg); /* Otočíme zadní stranu opačným směrem */
+}
+
+.red {
+    background-image: url('../img/card-red.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.yellow {
+    background-image: url('../img/card-yellow.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.green {
+    background-image: url('../img/card-green.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.purple {
+    background-image: url('../img/card-purple.png');
+    background-size: cover;
+    background-position: center;
+}
+
