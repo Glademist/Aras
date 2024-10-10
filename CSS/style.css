@@ -4,7 +4,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
     margin: 0;
     padding: 10px; /* Small padding for better mobile display */
 }
@@ -46,18 +45,18 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    backface-visibility: hidden; /* Hide the back face when the card flips */
+    backface-visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4vw; /* Responsive font size for mobile screens */
+    font-size: 18px;
     color: white;
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Ensure content respects rounded corners */
+    border-radius: 10px;
+    overflow: hidden;
     transition: transform 0.8s ease-in-out; /* Smooth flipping animation */
-    background-size: cover; /* Ensure the image covers the entire card */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .card-front {

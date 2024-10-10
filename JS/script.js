@@ -1,16 +1,16 @@
-// Define the card data with colors and names
+// Define the card data with color classes and names
 const cards = [
-    { color: 'red', name: 'Building a 2.4 Voron' },
-    { color: 'red', name: 'Warhammer' },
-    { color: 'red', name: 'AI' },
-    { color: 'red', name: 'Coding' },
-    { color: 'yellow', name: 'Household chores' },
-    { color: 'yellow', name: 'Physical health' },
-    { color: 'yellow', name: 'Mental health' },
-    { color: 'green', name: 'Wife time' },
-    { color: 'green', name: 'Daughter time' },
-    { color: 'green', name: 'Son time' },
-    { color: 'purple', name: 'Wild time' }
+    { colorClass: 'red', backgroundColor: '#790010', name: 'Building a 2.4 Voron' },   // Red
+    { colorClass: 'red', backgroundColor: '#790010', name: 'Warhammer' },              // Red
+    { colorClass: 'red', backgroundColor: '#790010', name: 'AI' },                     // Red
+    { colorClass: 'red', backgroundColor: '#790010', name: 'Coding' },                 // Red
+    { colorClass: 'yellow', backgroundColor: '#633800', name: 'Household chores' },    // Yellow
+    { colorClass: 'yellow', backgroundColor: '#633800', name: 'Physical health' },     // Yellow
+    { colorClass: 'yellow', backgroundColor: '#633800', name: 'Mental health' },       // Yellow
+    { colorClass: 'green', backgroundColor: '#004b0d', name: 'Wife time' },            // Green
+    { colorClass: 'green', backgroundColor: '#004b0d', name: 'Daughter time' },        // Green
+    { colorClass: 'green', backgroundColor: '#004b0d', name: 'Son time' },             // Green
+    { colorClass: 'purple', backgroundColor: '#6c065f', name: 'Wild time' }            // Purple
 ];
 
 // Function to get a deterministic hash-based card for a given date and hour
@@ -59,8 +59,8 @@ function flipCard() {
     // Remove all color classes to reset the background image
     cardFront.classList.remove('red', 'yellow', 'green', 'purple');
 
-    // Add the new color class to update the background image
-    cardFront.classList.add(selectedCard.color);
+    // Add the new color class to update the card's image
+    cardFront.classList.add(selectedCard.colorClass);
 
     // Update the card text
     cardText.textContent = selectedCard.name;
@@ -75,7 +75,7 @@ function flipCard() {
 // Function to update the background color of the webpage for the next card
 function updateBackgroundColor() {
     const nextCard = determineNextCard();
-    document.body.style.backgroundColor = nextCard.color;
+    document.body.style.backgroundColor = nextCard.backgroundColor;
 }
 
 // Add event listener to the card to trigger the flipCard function on click
