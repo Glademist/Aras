@@ -11,9 +11,8 @@ body {
 
 .container {
     text-align: center;
-    background-color: #ffffff;
+    background-color: inherit; /* Match the body's background color */
     padding: 15px;
-    border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 90vw; /* Ensure the container fits within mobile viewports */
 }
@@ -29,7 +28,8 @@ body {
 
 .card-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Arrange the card and hint box vertically */
+    align-items: center; /* Center the card and hint box horizontally */
     margin-top: 20px;
 }
 
